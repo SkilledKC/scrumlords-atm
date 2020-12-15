@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
  
 
 
-        function loginPin() {
+        loginPin = () => {
             let loginPin = parseInt(document.getElementById("loginPin").value);
             if (loginPin.length === undefined) {
                 document.getElementById("displayAlerts").innerHTML = "Can't be blank";
@@ -68,7 +68,7 @@
 
         }
 
-        function createPin() {
+         createPin = () => {
             let createPin = document.getElementById("createPin").value;
             if (createPin == localStorage.getItem("pin")) {
                 document.getElementById("displayAlerts").innerHTML = "PIN already exists";
@@ -84,7 +84,7 @@
             }
         }
 
-        function withdrawal() {
+         withdrawal = () => {
             
             let withdrawalAmount = parseInt(document.getElementById("withdrawalInput").value);
 
@@ -103,7 +103,8 @@
             }
         }
 
-        function deposit() {
+         deposit = () => {
+
             let depositAmount = parseInt(document.getElementById("depositInput").value);
 
             console.log("deposit"+ depositAmount);
@@ -123,7 +124,19 @@
             }            
         }
 
-        function updatePin() {
+         updatePin = () => {
+let updatePin = document.getElementById("updatePin").value;
+            if (updatePin == localStorage.getItem("Pin")) {
+                document.getElementById("displayAlerts").innerHTML = "incorrect pin";
+                setTimeout(clearErr, 3000);
+            }
+            else {
+                localStorage.setItem("pin",updatePin);
+                localStorage.setItem("balance",0);
+                document.getElementById("login").style = "display:none";
+                document.getElementById("withdrawalDeposit").style = "display:block";
+                document.getElementById("displayBalance").innerHTML = "$" + localStorage.getItem("balance");
+
             
         }
 
@@ -131,7 +144,7 @@
 
         }
 
-        function clearErr() {
+         clearErr = () => {
             document.getElementById("displayAlerts").innerHTML = "";
         }
 
